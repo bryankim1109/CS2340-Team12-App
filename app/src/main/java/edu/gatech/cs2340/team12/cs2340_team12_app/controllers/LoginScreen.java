@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.team12.cs2340_team12_app;
+package edu.gatech.cs2340.team12.cs2340_team12_app.controllers;
 
 
 import android.content.Context;
@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import edu.gatech.cs2340.team12.cs2340_team12_app.R;
 
 public class LoginScreen extends AppCompatActivity {
     private Button cancel;
