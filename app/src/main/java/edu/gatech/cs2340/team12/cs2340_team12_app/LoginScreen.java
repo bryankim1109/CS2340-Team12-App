@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.content.Intent;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginScreen extends AppCompatActivity {
     private Button cancel;
@@ -29,8 +31,18 @@ public class LoginScreen extends AppCompatActivity {
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchMainActivity();
-                finish();
+
+                EditText username = findViewById(R.id.username);
+                EditText password = findViewById(R.id.password);
+                String userString = username.getText().toString();
+                String passString = password.getText().toString();
+
+                if(userString.equals("user") && passString.equals("pass")) {
+                    launchMainActivity();
+                    finish();
+                } else {
+                    Toast.makeText(LoginScreen.this, "Incorrect username or password", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
