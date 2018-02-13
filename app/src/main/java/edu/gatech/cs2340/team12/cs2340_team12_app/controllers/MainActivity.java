@@ -10,12 +10,12 @@ import android.view.View;
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
 
 public class MainActivity extends AppCompatActivity {
-    private Button LogOut;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button LogOut;
 
         LogOut = findViewById(R.id.logout);
         LogOut.setOnClickListener(new View.OnClickListener() {

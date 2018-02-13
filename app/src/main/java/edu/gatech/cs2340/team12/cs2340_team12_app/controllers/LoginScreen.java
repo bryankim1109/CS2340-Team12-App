@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.team12.cs2340_team12_app.controllers;
 
-
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,13 +12,13 @@ import android.widget.Toast;
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
 
 public class LoginScreen extends AppCompatActivity {
-    private Button cancel;
-    private Button enter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
+
+        Button cancel;
+        Button enter;
 
         cancel = findViewById(R.id.cancel);
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +49,6 @@ public class LoginScreen extends AppCompatActivity {
     }
 
     private void launchMainActivity() {
-
         Intent intent = MainActivity.makeIntent(this);
         startActivity(intent);
     }
