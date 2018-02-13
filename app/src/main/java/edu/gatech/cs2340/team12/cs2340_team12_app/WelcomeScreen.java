@@ -8,25 +8,25 @@ import android.view.View;
 
 
 public class WelcomeScreen extends AppCompatActivity {
-    private Button LaunchActivity;
+    private Button login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
 
-        LaunchActivity = (Button) findViewById(R.id.login);
-        LaunchActivity.setOnClickListener(new View.OnClickListener() {
+        login = findViewById(R.id.login);
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                launchActivity();
+                launchLoginScreen();
             }
         });
 
     }
-    private void launchActivity() {
+    private void launchLoginScreen() {
 
-        Intent intent = new Intent(this, LoginScreen.class);
+        Intent intent = LoginScreen.makeIntent(this);
         startActivity(intent);
     }
 
