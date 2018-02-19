@@ -10,8 +10,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
+import edu.gatech.cs2340.team12.cs2340_team12_app.models.RegisteredUserMap;
 
-public class LoginScreen extends AppCompatActivity {
+public class LoginScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +39,13 @@ public class LoginScreen extends AppCompatActivity {
                 String userString = username.getText().toString();
                 String passString = password.getText().toString();
 
-                if(userString.equals("user") && passString.equals("pass")) {
+                RegisteredUserMap userMap = RegisteredUserMap.getInstance();
+
+                if(userMap.loginAttempt(userString, passString)) {
                     launchMainActivity();
                     finish();
                 } else {
-                    Toast.makeText(LoginScreen.this, "Incorrect username or password", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginScreenActivity.this, "Incorrect username or password", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -54,7 +57,7 @@ public class LoginScreen extends AppCompatActivity {
     }
 
     public static Intent makeIntent(Context context) {
-        return new Intent(context, LoginScreen.class);
+        return new Intent(context, LoginScreenActivity.class);
     }
 
 }
