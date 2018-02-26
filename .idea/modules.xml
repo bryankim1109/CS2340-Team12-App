@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/CS2340-Team12-App.iml" filepath="$PROJECT_DIR$/.idea/CS2340-Team12-App.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CS2340-Team12-App.iml" filepath="$PROJECT_DIR$/CS2340-Team12-App.iml" />
       <module fileurl="file://C:\Users\Gabriel\Documents\School\04 Senior 2nd Semester\CS 2340\M4 Stuff\CS2340-Team12-App\CS2340-Team12-App.iml" filepath="C:\Users\Gabriel\Documents\School\04 Senior 2nd Semester\CS 2340\M4 Stuff\CS2340-Team12-App\CS2340-Team12-App.iml" />
+      <module fileurl="file://C:\Users\storm\Desktop\cs2340\CS2340-Team12-App\.idea\CS2340-Team12-App.iml" filepath="C:\Users\storm\Desktop\cs2340\CS2340-Team12-App\.idea\CS2340-Team12-App.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
