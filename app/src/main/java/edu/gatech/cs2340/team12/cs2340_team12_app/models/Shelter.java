@@ -11,7 +11,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Shelter {
     private DatabaseReference mDatabase;
-    private DatabaseReference mDatabase;
     private String key;
     private String shelterName;
     private String capacity;
