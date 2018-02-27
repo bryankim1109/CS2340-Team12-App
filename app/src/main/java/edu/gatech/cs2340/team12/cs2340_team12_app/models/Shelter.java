@@ -21,6 +21,28 @@ public class Shelter {
     private String notes;
     private String phoneNumber;
 
+    public Shelter() {
+
+    }
+
+    public Shelter(String key, String shelterName, String capacity, String restrictions,
+                   String longitude, String latitude, String address, String notes, String phoneNumber) {
+        this.key = key;
+        this.shelterName = shelterName;
+        this.capacity = capacity;
+        this.restrictions = restrictions;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.address = address;
+        this.notes = notes;
+        this.phoneNumber = phoneNumber;
+
+    }
+
+    public openCSVData() {
+
+    }
+
     public String getKey() {
         return key;
     }
