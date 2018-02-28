@@ -35,7 +35,10 @@ public class ShelterList {
             nextLine = reader.readNext();
         }
     }
-    //
+
+    public List<Shelter> getShelters() {
+        return shelters;
+    }
 
 }
 
