@@ -35,6 +35,7 @@ public class ShelterList {
             nextLine = reader.readNext();
         }
     }
+    //
 
 }
 
