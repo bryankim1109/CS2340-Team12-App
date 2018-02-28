@@ -15,7 +15,7 @@ import java.util.List;
 public class ShelterList {
 
     private DatabaseReference mDatabase;
-    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference ref = database.getReference(
             "server/saving-data/shelterinfo");
     private List<Shelter> shelters = new ArrayList<>();
@@ -23,21 +23,18 @@ public class ShelterList {
 
     public void parse(String csvFileName) throws Exception
     {
-        //Build reader instance
-        //Default seperator is comma
-        //Default quote character is double quote
-        //Start reading from line number 2 (line numbers start from zero)
         CSVReader reader = new CSVReader(new FileReader(csvFileName + ".csv"));
 
-        //Read CSV line by line and use the string array as you want
         String[] nextLine = reader.readNext();
+        int counter = 0;
         while (nextLine != null) {
-            if (nextLine != null) {
-                shelters.add(new Shelter(nextLine[1], nextLine[2], nextLine[3],
-                        nextLine[4], nextLine[5], nextLine[6], nextLine[8]));
-            }
+            shelters.add(new Shelter(nextLine[1], nextLine[2], nextLine[3],
+                    nextLine[4], nextLine[5], nextLine[6], nextLine[8]));
+            sheltersRef.push().setValue(shelters.get(counter));
+            counter++;
             nextLine = reader.readNext();
         }
     }
+
 }
 
