@@ -11,6 +11,107 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Shelter {
     private DatabaseReference mDatabase;
+    private String key;
+    private String shelterName;
+    private String capacity;
+    private String restrictions;
+    private String longitude;
+    private String latitude;
+    private String address;
+    private String notes;
+    private String phoneNumber;
 
+    public Shelter() {
+
+    }
+
+    public Shelter(String key, String shelterName, String capacity, String restrictions,
+                   String longitude, String latitude, String address, String notes, String phoneNumber) {
+        this.key = key;
+        this.shelterName = shelterName;
+        this.capacity = capacity;
+        this.restrictions = restrictions;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.address = address;
+        this.notes = notes;
+        this.phoneNumber = phoneNumber;
+
+    }
+
+    public openCSVData() {
+
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public String getShelterName() {
+        return shelterName;
+    }
+
+    public String getCapacity() {
+        return capacity;
+    }
+
+    public String getRestrictions() {
+        return restrictions;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+    public void setShelterName(String shelterName) {
+        this.shelterName = shelterName;
+    }
+
+    public void setCapacity(String capacity) {
+        this.capacity = capacity;
+    }
+
+    public void setRestrictions(String restrictions) {
+        this.restrictions = restrictions;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setAddress(String address) {
+        this.address =  address;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
 }
