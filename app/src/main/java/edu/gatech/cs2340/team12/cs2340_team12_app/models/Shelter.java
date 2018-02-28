@@ -89,4 +89,8 @@ public class Shelter {
         this.phoneNumber = phoneNumber;
     }
 
+    public String toString() {
+        return shelterName;
+    }
+
 }
