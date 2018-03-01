@@ -1,16 +1,13 @@
 package edu.gatech.cs2340.team12.cs2340_team12_app.models;
 
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import java.io.Serializable;
 
 /**
  * Created by Bryan on 2/25/2018.
  */
 
-public class Shelter {
+public class Shelter implements Serializable{
     private String shelterName;
     private String capacity;
     private String gender;
@@ -91,6 +88,16 @@ public class Shelter {
 
     public String toString() {
         return shelterName;
+    }
+
+    public String toDisplayInfo() {
+        return "Shelter name: " + shelterName + "\n" +
+                "Capacity: " + capacity + "\n" +
+                "Gender: " + gender + "\n" +
+                "Longitude: " + longitude + "\n" +
+                "Latitude: " + latitude + "\n" +
+                "Address: " + address + "\n" +
+                "Phone number: " + phoneNumber;
     }
 
 }

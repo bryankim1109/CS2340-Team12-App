@@ -14,26 +14,11 @@ import java.util.List;
 
 public class ShelterList {
 
-    private DatabaseReference mDatabase;
-    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference ref = database.getReference(
-            "server/saving-data/shelterinfo");
     private List<Shelter> shelters = new ArrayList<>();
-    private DatabaseReference sheltersRef = ref.child("Shelters");
 
-    public void parse(String csvFileName) throws Exception
-    {
-        CSVReader reader = new CSVReader(new FileReader(csvFileName + ".csv"));
+    public ShelterList() {
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        String[] nextLine = reader.readNext();
-        int counter = 0;
-        while (nextLine != null) {
-            shelters.add(new Shelter(nextLine[1], nextLine[2], nextLine[3],
-                    nextLine[4], nextLine[5], nextLine[6], nextLine[8]));
-            sheltersRef.push().setValue(shelters.get(counter));
-            counter++;
-            nextLine = reader.readNext();
-        }
     }
 
     public List<Shelter> getShelters() {

@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
+import edu.gatech.cs2340.team12.cs2340_team12_app.models.Shelter;
 
 public class ShelterActivity extends AppCompatActivity {
 
@@ -16,6 +18,13 @@ public class ShelterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shelter);
 
+        TextView tvShelter;
+
+        Intent intent = getIntent();
+        Shelter shelter = (Shelter) intent.getSerializableExtra("selectedShelter");
+
+        tvShelter = findViewById(R.id.tvShelter);
+        tvShelter.setText(shelter.toDisplayInfo());
 
         Button back;
 

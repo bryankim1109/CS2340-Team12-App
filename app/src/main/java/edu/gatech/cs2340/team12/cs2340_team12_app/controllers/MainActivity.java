@@ -8,8 +8,12 @@ import android.widget.Button;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
+import edu.gatech.cs2340.team12.cs2340_team12_app.models.CSVParser;
+import edu.gatech.cs2340.team12.cs2340_team12_app.models.Shelter;
+import edu.gatech.cs2340.team12.cs2340_team12_app.models.ShelterList;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -19,17 +23,25 @@ public class MainActivity extends AppCompatActivity {
 
         Button LogOut;
         Button Select;
-        Spinner shelterSpinner;
+        final Spinner shelterSpinner;
+
+        ShelterList shelterList = new ShelterList();
 
         shelterSpinner = findViewById(R.id.shelterSpinner);
-        //ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, ShelterList);
-        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //shelterSpinner.setAdapter(adapter);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, shelterList.getShelters());
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        shelterSpinner.setAdapter(adapter);
 
         LogOut = findViewById(R.id.logout);
         LogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                try {
+                    CSVParser.parse();
+                }
+                catch(Exception a){
+                    Toast.makeText(MainActivity.this, "Parser doesn't work", Toast.LENGTH_LONG).show();
+                }
                 finish();
             }
         });
@@ -38,13 +50,15 @@ public class MainActivity extends AppCompatActivity {
         Select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchShelterActivity();
+                Shelter shelter = (Shelter) shelterSpinner.getSelectedItem();
+                launchShelterActivity(shelter);
             }
         });
     }
 
-    private void launchShelterActivity() {
+    private void launchShelterActivity(Shelter s) {
         Intent intent = ShelterActivity.makeIntent(this);
+        intent.putExtra("selectedShelter", s);
         startActivity(intent);
     }
 
