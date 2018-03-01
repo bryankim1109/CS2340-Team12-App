@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.CSVParser;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.Shelter;
@@ -20,6 +22,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(false) {
+            try {
+                CSVParser.parse(getResources().openRawResource(R.raw.homeless_shelter_database));
+            }
+            catch(Exception a){
+                Toast.makeText(MainActivity.this, "Parser doesn't work", Toast.LENGTH_LONG).show();
+            }
+        }
 
         Button LogOut;
         Button Select;
@@ -36,12 +47,6 @@ public class MainActivity extends AppCompatActivity {
         LogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    CSVParser.parse();
-                }
-                catch(Exception a){
-                    Toast.makeText(MainActivity.this, "Parser doesn't work", Toast.LENGTH_LONG).show();
-                }
                 finish();
             }
         });

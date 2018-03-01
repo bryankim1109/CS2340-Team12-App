@@ -14,6 +14,12 @@ import java.util.List;
 
 public class ShelterList {
 
+    private static final ShelterList ourInstance = new ShelterList();
+
+    public static ShelterList getInstance() {
+        return ourInstance;
+    }
+
     private List<Shelter> shelters = new ArrayList<>();
 
     public ShelterList() {
