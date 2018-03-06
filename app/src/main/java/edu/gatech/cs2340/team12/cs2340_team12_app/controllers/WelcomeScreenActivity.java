@@ -16,6 +16,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 
         Button login;
         Button registration;
+        Button loginGuest;
 
         login = findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
@@ -33,6 +34,14 @@ public class WelcomeScreenActivity extends AppCompatActivity {
             }
         });
 
+        loginGuest = findViewById(R.id.loginGuest);
+        loginGuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchMainScreen();
+            }
+        });
+
     }
 
     private void launchLoginScreen() {
@@ -44,6 +53,12 @@ public class WelcomeScreenActivity extends AppCompatActivity {
     private void launchRegistrationScreen() {
 
         Intent intent = RegistrationActivity.makeIntent(this);
+        startActivity(intent);
+    }
+
+    private void launchMainScreen() {
+
+        Intent intent = MainActivity.makeIntent(this);
         startActivity(intent);
     }
 

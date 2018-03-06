@@ -24,7 +24,7 @@
         <activity android:name=".controllers.LoginScreenActivity" />
         <activity android:name=".controllers.MainActivity" />
         <activity android:name=".controllers.RegistrationActivity" />
-        <activity android:name=".controllers.RegSuccessActivity"></activity>
+        <activity android:name=".controllers.ShelterActivity"></activity>
     </application>
 
 </manifest>

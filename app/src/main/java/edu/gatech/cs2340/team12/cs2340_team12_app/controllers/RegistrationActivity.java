@@ -50,16 +50,11 @@ public class RegistrationActivity extends AppCompatActivity {
                 } else if(regSuccess == 0){
                     Toast.makeText(RegistrationActivity.this, "The passwords do not match", Toast.LENGTH_LONG).show();
                 } else {
-                    launchRegSuccessActivity();
+                    Toast.makeText(RegistrationActivity.this, "Registration Successful", Toast.LENGTH_LONG).show();
                     finish();
                 }
             }
         });
-    }
-
-    private void launchRegSuccessActivity() {
-        Intent intent = RegSuccessActivity.makeIntent(this);
-        startActivity(intent);
     }
 
     public static Intent makeIntent(Context context) {
