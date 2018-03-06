@@ -16,7 +16,7 @@ public class Admin extends Account {
     public void lockUser(User u) {
         u.setLockStatus(true);
     }
-    public void unlocklockUser(User u) {
+    public void unlockUser(User u) {
         u.setLockStatus(false);
     }
     public void deleteUser(User u) {
