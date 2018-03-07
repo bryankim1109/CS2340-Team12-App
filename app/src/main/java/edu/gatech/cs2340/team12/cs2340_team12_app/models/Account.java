@@ -5,27 +5,24 @@ package edu.gatech.cs2340.team12.cs2340_team12_app.models;
  * Created by Gabriel on 2/25/2018.
  */
 
-public abstract class Account {
+public class Account {
 
     Account() {
         username = null;
         password = null;
-        phoneNumber = null;
         email = null;
         lockStatus = false;
     }
 
-    Account(String user, String pass, String phone, String emale, boolean lock) {
-        username = user;
-        password = pass;
-        phoneNumber = phone;
-        email = emale;
-        lockStatus = lock;
+    Account(String username, String password, String email, boolean lockStatus) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.lockStatus = lockStatus;
     }
 
     private String username;
     private String password;
-    private String phoneNumber;
     private String email;
     private boolean lockStatus;
 
@@ -36,22 +33,22 @@ public abstract class Account {
     public String getUsername() {
         return username;
     }
+    public void setUsername(String username) { this.username = username; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+
+
     public String getEmail() {
         return email;
     }
-    public void setEmail(String emale) {
-        email = emale;
-    }
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-    public void setPhoneNumber(String phone) {
-        phoneNumber = phone;
+    public void setEmail(String email) {
+        this.email = email;
     }
     public boolean getLockStatus() {
         return lockStatus;
     }
-    public void setLockStatus(boolean lock) {
-        lockStatus = lock;
+    public void setLockStatus(boolean lockStatus) {
+        this.lockStatus = lockStatus;
     }
+
 }
