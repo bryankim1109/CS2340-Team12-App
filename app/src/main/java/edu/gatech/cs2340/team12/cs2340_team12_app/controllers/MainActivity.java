@@ -10,24 +10,15 @@ import android.view.View;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
-import edu.gatech.cs2340.team12.cs2340_team12_app.models.CSVParser;
+//import edu.gatech.cs2340.team12.cs2340_team12_app.models.CSVParser;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.Shelter;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.ShelterList;
 
 public class MainActivity extends AppCompatActivity {
-
-    DatabaseReference databaseShelters;
-    List<Shelter> shelterList;
+    ShelterList myShelterList = ShelterList.getInstance();
     Spinner shelterSpinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,35 +34,12 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        }
 
-        databaseShelters = FirebaseDatabase.getInstance().getReference("Shelters");
-        shelterList = new ArrayList<>();
-        databaseShelters.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot shelterSnapshot : dataSnapshot.getChildren()) {
-                    Shelter shelter = shelterSnapshot.getValue(Shelter.class);
-
-                    shelterList.add(shelter);
-                }
-
-                Toast.makeText(MainActivity.this, "Database read", Toast.LENGTH_LONG).show();
-                shelterSpinner = findViewById(R.id.shelterSpinner);
-                ArrayAdapter<Shelter> adapter = new ArrayAdapter(MainActivity.this,android.R.layout.simple_spinner_item, shelterList);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                shelterSpinner.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
+        List<Shelter> shelters = myShelterList.getAllShelters();
         shelterSpinner = findViewById(R.id.shelterSpinner);
-        ArrayAdapter<Shelter> adapter = new ArrayAdapter(MainActivity.this,android.R.layout.simple_spinner_item, shelterList);
+        ArrayAdapter<Shelter> adapter = new ArrayAdapter(MainActivity.this,android.R.layout.simple_spinner_item, shelters);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         shelterSpinner.setAdapter(adapter);
+        shelterSpinner.setSelection(0);
 
         Button LogOut;
         Button Select;
@@ -88,8 +56,12 @@ public class MainActivity extends AppCompatActivity {
         Select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Shelter shelter = (Shelter) shelterSpinner.getSelectedItem();
-                launchShelterActivity(shelter);
+                if(shelterSpinner.getSelectedItem() != null) {
+                    Shelter shelter = (Shelter) shelterSpinner.getSelectedItem();
+                    launchShelterActivity(shelter);
+                } else {
+                    Toast.makeText(MainActivity.this, "No shelter selected", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

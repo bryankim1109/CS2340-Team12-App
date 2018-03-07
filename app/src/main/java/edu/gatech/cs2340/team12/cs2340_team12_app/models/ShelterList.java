@@ -25,7 +25,7 @@ public class ShelterList {
     private List<Shelter> filteredShelters = new ArrayList<>();
 
     public ShelterList() {
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Shelters");
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
