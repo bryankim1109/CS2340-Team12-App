@@ -9,7 +9,7 @@ public class User extends Account {
     User() {
         super();
         ageGroup = null;
-        gender = -1;
+        gender = "N/A";
         veteranStatus = false;
         longitude = 0;
         latitude = 0;
@@ -17,12 +17,12 @@ public class User extends Account {
     User(String username, String password) {
         super(username, password, "", false);
         ageGroup = null;
-        gender = -1;
+        gender = "N/A";
         veteranStatus = false;
         longitude = 0;
         latitude = 0;
     }
-    User(String username, String password, String email, boolean lockStatus, String ageGroup, int gender, boolean veteranStatus) {
+    User(String username, String password, String email, boolean lockStatus, String ageGroup, String gender, boolean veteranStatus) {
         super(username, password, email, lockStatus);
         this.ageGroup = ageGroup;
         this.gender = gender;
@@ -32,7 +32,7 @@ public class User extends Account {
     }
 
     private String ageGroup;
-    private int gender;
+    private String gender;
     private String contactInfo;
     private boolean veteranStatus;
     private double longitude;
@@ -44,10 +44,10 @@ public class User extends Account {
     public void setAgeGroup(String ageGroup) {
         this.ageGroup = ageGroup;
     }
-    public int getGender() {
+    public String getGender() {
         return gender;
     }
-    public void setGender(int gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
     public String getContactInfo() { return contactInfo; }

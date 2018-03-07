@@ -48,7 +48,28 @@ public class ShelterList {
     }
     public List<Shelter> getFilteredShelters() { return filteredShelters; }
 
-    public void filterShelters(User user) {
+    public void filterShelters(User user, String name) {
+        filteredShelters.clear();
+        String userGender = user.getGender();
+        String userAgeGroup = user.getAgeGroup();
+        for(Shelter shelter : allShelters) {
+            String gender = shelter.getGender();
+            if((userGender.equals("Male") && gender.contains("Men")) ||
+                    (userGender.equals("Female") && gender.contains("Women")) ||
+                    userGender.equals("N/A")) {
+
+                if ((userAgeGroup.equals("Family with newborns") && gender.contains("Families w/ newborns")) ||
+                        (userAgeGroup.equals("Child") && gender.contains("Children")) ||
+                        (userAgeGroup.equals("Young Adult") && gender.contains("Young Adults")) ||
+                        userAgeGroup.equals("All") || gender.contains("Anyone")) {
+
+                    if(name.equals("") || name.equals(shelter.getShelterName())) {
+                        filteredShelters.add(shelter);
+                    }
+                }
+            }
+        }
+
 
     }
 
