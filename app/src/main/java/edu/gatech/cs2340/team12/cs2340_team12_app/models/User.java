@@ -23,26 +23,35 @@ public class User extends Account {
 
     private Date birthday;
     private int gender;
+    private String contactInfo;
     private boolean veteranStatus;
+    private double longitude;
+    private double latitude;
 
     public Date getBirthday() {
         return birthday;
     }
     public void setBirthday(Date birth) {
-        birthday = birth;
+        this.birthday = birth;
     }
     public int getGender() {
         return gender;
     }
     public void setGender(int gndr) {
-        gender = gndr;
+        this.gender = gndr;
     }
+    public String getContactInfo() { return contactInfo; }
+    public void setContactInfo(String contactInfo) { this.contactInfo = contactInfo; }
     public boolean getVeteranStatus() {
         return veteranStatus;
     }
     public void setVeteranStatus(boolean vetStat) {
-        veteranStatus = vetStat;
+        this.veteranStatus = vetStat;
     }
+    public double getLongitude() { return longitude; }
+    public void setLongitude(double longitude) { this.longitude = longitude; }
+    public double getLatitude() { return latitude; }
+    public void setLatitude(double latitude) { this.latitude = latitude; }
 
     public int getAge() {
         return 1; //****************************** use the birthday to determine the age
