@@ -9,8 +9,8 @@ public class Admin extends Account {
     Admin() {
         super();
     }
-    Admin(String user, String pass, String phone, String emale, boolean lock) {
-        super(user, pass, phone, emale, lock);
+    Admin(String user, String pass, String email, boolean lock) {
+        super(user, pass, email, lock);
     }
 
     public void lockUser(User u) {
