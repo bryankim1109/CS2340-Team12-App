@@ -6,7 +6,7 @@ package edu.gatech.cs2340.team12.cs2340_team12_app.models;
 
 public class User extends Account {
 
-    User() {
+    public User() {
         super();
         ageGroup = null;
         gender = "N/A";
@@ -14,7 +14,8 @@ public class User extends Account {
         longitude = 0;
         latitude = 0;
     }
-    User(String username, String password) {
+    //for Registration
+    public User(String username, String password) {
         super(username, password, "", false);
         ageGroup = null;
         gender = "N/A";
@@ -22,7 +23,16 @@ public class User extends Account {
         longitude = 0;
         latitude = 0;
     }
-    User(String username, String password, String email, boolean lockStatus, String ageGroup, String gender, boolean veteranStatus) {
+    //for Search
+    public User(String ageGroup, String gender, boolean veteranStatus) {
+        super();
+        this.ageGroup = ageGroup;
+        this.gender = gender;
+        this.veteranStatus = veteranStatus;
+        longitude = 0;
+        latitude = 0;
+    }
+    public User(String username, String password, String email, boolean lockStatus, String ageGroup, String gender, boolean veteranStatus) {
         super(username, password, email, lockStatus);
         this.ageGroup = ageGroup;
         this.gender = gender;
