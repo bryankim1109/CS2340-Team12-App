@@ -10,6 +10,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
+import edu.gatech.cs2340.team12.cs2340_team12_app.models.FirebaseInterface;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.Shelter;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.ShelterList;
 
@@ -18,6 +19,8 @@ public class WelcomeScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
+
+        FirebaseInterface.getInstance();
 
         Button login;
         Button registration;

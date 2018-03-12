@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.team12.cs2340_team12_app.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,8 +14,8 @@ public class ShelterList {
 
     public ShelterList() {
         FirebaseInterface fbi = FirebaseInterface.getInstance();
-        allShelters = fbi.getShelters();
-        filteredShelters = allShelters;
+        allShelters = new ArrayList<>(fbi.getShelters());
+        filteredShelters = new ArrayList<>(allShelters);
     }
 
     public List<Shelter> getAllShelters() {
@@ -22,7 +23,7 @@ public class ShelterList {
     }
     public List<Shelter> getFilteredShelters() { return filteredShelters; }
 
-    public void resetFilteredShelters() { filteredShelters = allShelters; }
+    public void resetFilteredShelters() { filteredShelters = new ArrayList<>(allShelters); }
 
     public void filterShelters(User user, String name) {
         filteredShelters.clear();
@@ -46,8 +47,6 @@ public class ShelterList {
 //            }
             filteredShelters.add(shelter);
         }
-
-
 
     }
 

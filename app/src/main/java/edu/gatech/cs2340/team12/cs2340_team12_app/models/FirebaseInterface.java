@@ -40,9 +40,6 @@ public class FirebaseInterface {
         });
     }
 
-
-    private DatabaseReference shelterDatabase;
-    private DatabaseReference userDatabase;
     private List<Shelter> shelters = new ArrayList<>();
 
     public List<Shelter> getShelters() {
