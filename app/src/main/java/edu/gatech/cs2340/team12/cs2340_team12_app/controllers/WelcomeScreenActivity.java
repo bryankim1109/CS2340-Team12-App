@@ -5,14 +5,22 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.content.Intent;
 import android.view.View;
+import android.widget.Toast;
+
+import java.util.List;
 
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
+import edu.gatech.cs2340.team12.cs2340_team12_app.models.FirebaseInterface;
+import edu.gatech.cs2340.team12.cs2340_team12_app.models.Shelter;
+import edu.gatech.cs2340.team12.cs2340_team12_app.models.ShelterList;
 
 public class WelcomeScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
+
+        FirebaseInterface.getInstance();
 
         Button login;
         Button registration;
@@ -41,6 +49,9 @@ public class WelcomeScreenActivity extends AppCompatActivity {
                 launchMainScreen();
             }
         });
+
+        //ShelterList myShelterList = ShelterList.getInstance();
+        //Toast.makeText(WelcomeScreenActivity.this, "Size: " + myShelterList.getAllShelters().size(), Toast.LENGTH_LONG).show();
 
     }
 

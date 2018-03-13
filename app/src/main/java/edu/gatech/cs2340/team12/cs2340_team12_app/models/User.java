@@ -1,51 +1,81 @@
 package edu.gatech.cs2340.team12.cs2340_team12_app.models;
 
-import java.util.Date;
-
 /**
  * Created by Gabriel on 2/27/2018.
  */
 
 public class User extends Account {
 
-    User() {
+    public User() {
         super();
-        birthday = null;
-        gender = -1;
+        ageGroup = null;
+        gender = "N/A";
         veteranStatus = false;
+        longitude = 0;
+        latitude = 0;
     }
-    User(String user, String pass, String phone, String emale, boolean lock, Date birth, int gndr, boolean vetStat) {
-        super(user, pass, phone, emale, lock);
-        birthday = birth;
-        gender = gndr;
-        veteranStatus = vetStat;
+    //for Registration
+    public User(String username, String password) {
+        super(username, password, "", false);
+        ageGroup = null;
+        gender = "N/A";
+        veteranStatus = false;
+        longitude = 0;
+        latitude = 0;
+    }
+    //for Search
+    public User(String ageGroup, String gender, boolean veteranStatus) {
+        super();
+        this.ageGroup = ageGroup;
+        this.gender = gender;
+        this.veteranStatus = veteranStatus;
+        longitude = 0;
+        latitude = 0;
+    }
+    public User(String username, String password, String email, boolean lockStatus, String ageGroup, String gender, boolean veteranStatus) {
+        super(username, password, email, lockStatus);
+        this.ageGroup = ageGroup;
+        this.gender = gender;
+        this.veteranStatus = veteranStatus;
+        longitude = 0;
+        latitude = 0;
     }
 
-    private Date birthday;
-    private int gender;
+    private String ageGroup;
+    private String gender;
+    private String contactInfo;
     private boolean veteranStatus;
+    private double longitude;
+    private double latitude;
 
-    public Date getBirthday() {
-        return birthday;
+    public String getAgeGroup() {
+        return ageGroup;
     }
-    public void setBirthday(Date birth) {
-        birthday = birth;
+    public void setAgeGroup(String ageGroup) {
+        this.ageGroup = ageGroup;
     }
-    public int getGender() {
+    public String getGender() {
         return gender;
     }
-    public void setGender(int gndr) {
-        gender = gndr;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
+    public String getContactInfo() { return contactInfo; }
+    public void setContactInfo(String contactInfo) { this.contactInfo = contactInfo; }
     public boolean getVeteranStatus() {
         return veteranStatus;
     }
     public void setVeteranStatus(boolean vetStat) {
-        veteranStatus = vetStat;
+        this.veteranStatus = vetStat;
     }
+    public double getLongitude() { return longitude; }
+    public void setLongitude(double longitude) { this.longitude = longitude; }
+    public double getLatitude() { return latitude; }
+    public void setLatitude(double latitude) { this.latitude = latitude; }
 
-    public int getAge() {
-        return 1; //****************************** use the birthday to determine the age
+    public boolean locate() {
+        // set longitude and latitude. if successful, return true
+
+        return false;
     }
-
 }

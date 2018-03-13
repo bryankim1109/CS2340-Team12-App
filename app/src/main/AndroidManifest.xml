@@ -24,7 +24,8 @@
         <activity android:name=".controllers.LoginScreenActivity" />
         <activity android:name=".controllers.MainActivity" />
         <activity android:name=".controllers.RegistrationActivity" />
-        <activity android:name=".controllers.ShelterActivity"></activity>
+        <activity android:name=".controllers.ShelterActivity" />
+        <activity android:name=".controllers.SearchActivity"></activity>
     </application>
 
 </manifest>

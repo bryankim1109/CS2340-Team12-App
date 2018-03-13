@@ -11,23 +11,41 @@ public class Shelter implements Serializable{
     private String shelterName;
     private String capacity;
     private String gender;
+    private String ageGroup;
     private String longitude;
     private String latitude;
     private String address;
     private String phoneNumber;
+    private boolean veteranStatus;
 
     public Shelter() {
     }
 
+    // Used for parser
     public Shelter(String shelterName, String capacity, String gender,
                    String longitude, String latitude, String address, String phoneNumber) {
         this.shelterName = shelterName;
         this.capacity = capacity;
         this.gender = gender;
+        this.ageGroup = "";
         this.longitude = longitude;
         this.latitude = latitude;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.veteranStatus = false;
+    }
+
+    public Shelter(String shelterName, String capacity, String gender, String ageGroup,
+                   String longitude, String latitude, String address, String phoneNumber, boolean veteranStatus) {
+        this.shelterName = shelterName;
+        this.capacity = capacity;
+        this.gender = gender;
+        this.ageGroup = ageGroup;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.veteranStatus = veteranStatus;
     }
 
     public String getShelterName() {
@@ -58,6 +76,14 @@ public class Shelter implements Serializable{
         return phoneNumber;
     }
 
+    public String getAgeGroup() {
+        return ageGroup;
+    }
+
+    public boolean getVeteranStatus() {
+        return veteranStatus;
+    }
+
     public void setShelterName(String shelterName) {
         this.shelterName = shelterName;
     }
@@ -86,6 +112,14 @@ public class Shelter implements Serializable{
         this.phoneNumber = phoneNumber;
     }
 
+    public void setAgeGroup(String ageGroup) {
+        this.ageGroup = ageGroup;
+    }
+
+    public void setVeteranStatus(boolean veteranStatus) {
+        this.veteranStatus = veteranStatus;
+    }
+
     public String toString() {
         return shelterName;
     }
@@ -94,6 +128,8 @@ public class Shelter implements Serializable{
         return "Shelter name: " + shelterName + "\n" +
                 "Capacity: " + capacity + "\n" +
                 "Gender: " + gender + "\n" +
+                "Ages: " + ageGroup + "\n" +
+                "Veteran Only: " + (veteranStatus ? "Yes" : "No") + "\n" +
                 "Longitude: " + longitude + "\n" +
                 "Latitude: " + latitude + "\n" +
                 "Address: " + address + "\n" +
