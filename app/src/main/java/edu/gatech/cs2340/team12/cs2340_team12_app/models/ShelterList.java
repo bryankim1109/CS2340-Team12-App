@@ -31,21 +31,19 @@ public class ShelterList {
         String userAgeGroup = user.getAgeGroup();
         for(Shelter shelter : allShelters) {
             String gender = shelter.getGender();
-//            if((userGender.equals("Male") && gender.contains("Men")) ||
-//                    (userGender.equals("Female") && gender.contains("Women")) ||
-//                    userGender.equals("N/A")) {
-//
-//                if ((userAgeGroup.equals("Family with newborns") && gender.contains("Families w/ newborns")) ||
-//                        (userAgeGroup.equals("Child") && gender.contains("Children")) ||
-//                        (userAgeGroup.equals("Young Adult") && gender.contains("Young Adults")) ||
-//                        userAgeGroup.equals("Anyone") || gender.contains("Anyone")) {
-//
-//                    if(name.equals("") || name.equals("Shelter Name") || name.equals(shelter.getShelterName())) {
-//                        filteredShelters.add(shelter);
-//                    }
-//                }
-//            }
-            filteredShelters.add(shelter);
+            String ageGroup = shelter.getAgeGroup();
+            if(userGender.equals("Anyone") || gender.equals("Anyone") || (userGender.equals("Male") && gender.contains("Men")) ||
+                    (userGender.equals("Female") && gender.contains("Women"))) {
+
+                if (userAgeGroup.equals("Anyone") || ageGroup.equals("Anyone") ||(userAgeGroup.equals("Young Adults") && ageGroup.contains("Young Adults")) ||
+                        (userAgeGroup.equals("Family with newborns") && ageGroup.contains("Families")) ||
+                        (userAgeGroup.equals("Children") && ageGroup.contains("Children"))) {
+
+                    if(name.equals("") || name.equals("Shelter Name") || name.equals(shelter.getShelterName())) {
+                        filteredShelters.add(shelter);
+                    }
+                }
+            }
         }
 
     }

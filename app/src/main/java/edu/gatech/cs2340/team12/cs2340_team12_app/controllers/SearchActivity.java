@@ -33,7 +33,7 @@ public class SearchActivity extends AppCompatActivity {
         shelterNameText = findViewById(R.id.ShelterNameText);
 
         List<String> genders = new ArrayList<>();
-        genders.add("N/A");
+        genders.add("Anyone");
         genders.add("Male");
         genders.add("Female");
         ArrayAdapter<Shelter> genderAdapter = new ArrayAdapter(SearchActivity.this,android.R.layout.simple_spinner_item, genders);

@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(MainActivity.this, "Name: " + name, Toast.LENGTH_LONG).show();
                 //Toast.makeText(MainActivity.this, "Gender: " + u.getGender(), Toast.LENGTH_LONG).show();
                 //Toast.makeText(MainActivity.this, "AgeGroup: " + u.getAgeGroup(), Toast.LENGTH_LONG).show();
-                Toast.makeText(MainActivity.this, "Size: " + myShelterList.getAllShelters().size(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Size: " + myShelterList.getFilteredShelters().size(), Toast.LENGTH_LONG).show();
 
                 ArrayAdapter<Shelter> adapter = new ArrayAdapter(MainActivity.this,android.R.layout.simple_spinner_item, filtShelts);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
