@@ -13,6 +13,7 @@ public class User extends Account {
         veteranStatus = false;
         longitude = 0;
         latitude = 0;
+        hasBed = false;
     }
     //for Registration
     public User(String username, String password) {
@@ -22,6 +23,7 @@ public class User extends Account {
         veteranStatus = false;
         longitude = 0;
         latitude = 0;
+        hasBed = false;
     }
     //for Search
     public User(String ageGroup, String gender, boolean veteranStatus) {
@@ -31,14 +33,16 @@ public class User extends Account {
         this.veteranStatus = veteranStatus;
         longitude = 0;
         latitude = 0;
+        hasBed = false;
     }
-    public User(String username, String password, String email, boolean lockStatus, String ageGroup, String gender, boolean veteranStatus) {
+    public User(String username, String password, String email, boolean lockStatus, String ageGroup, String gender, boolean veteranStatus, boolean hasBed) {
         super(username, password, email, lockStatus);
         this.ageGroup = ageGroup;
         this.gender = gender;
         this.veteranStatus = veteranStatus;
         longitude = 0;
         latitude = 0;
+        this.hasBed = hasBed;
     }
 
     private String ageGroup;
@@ -47,6 +51,7 @@ public class User extends Account {
     private boolean veteranStatus;
     private double longitude;
     private double latitude;
+    private boolean hasBed;
 
     public String getAgeGroup() {
         return ageGroup;
@@ -72,6 +77,9 @@ public class User extends Account {
     public void setLongitude(double longitude) { this.longitude = longitude; }
     public double getLatitude() { return latitude; }
     public void setLatitude(double latitude) { this.latitude = latitude; }
+
+    public boolean getBedStatus() {return hasBed;}
+    public void setBedStatus(boolean hasBed) {this.hasBed = hasBed;}
 
     public boolean locate() {
         // set longitude and latitude. if successful, return true
