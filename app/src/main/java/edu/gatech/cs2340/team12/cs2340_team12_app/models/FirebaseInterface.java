@@ -79,7 +79,7 @@ public class FirebaseInterface {
         DatabaseReference userDatabase = FirebaseDatabase.getInstance().getReference("Accounts/Users");
         String key = userDatabase.push().getKey();
         u.setUID(key);
-        userDatabase.push().setValue(u);
+        userDatabase.child(key).setValue(u);
         return true;
     }
 
