@@ -24,6 +24,7 @@ public class Account implements Serializable{
     private String password;
     private String email;
     private boolean lockStatus;
+    private String UID;
 
     public boolean checkPassword(String input) {
         return password.equals(input);
@@ -49,5 +50,8 @@ public class Account implements Serializable{
     public void setLockStatus(boolean lockStatus) {
         this.lockStatus = lockStatus;
     }
+
+    public String getUID() {return UID;}
+    public void setUID(String UID) {this.UID = UID;}
 
 }
