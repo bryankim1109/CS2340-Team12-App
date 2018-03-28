@@ -30,9 +30,10 @@ public class MainActivity extends AppCompatActivity {
     Button Search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Intent intent = getIntent();
-        User loggedInUser = (User) intent.getSerializableExtra("selectedUser");
         super.onCreate(savedInstanceState);
+        intent = getIntent();
+        loggedInUser = (User) intent.getSerializableExtra("selectedUser");
+
         setContentView(R.layout.activity_main);
 
 //        if(false) {
@@ -51,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         shelterSpinner.setAdapter(adapter);
         shelterSpinner.setSelection(0);
-        Toast.makeText(MainActivity.this, "Size: " + myShelterList.getAllShelters().size() + " and " + myShelterList.getFilteredShelters().size(), Toast.LENGTH_LONG).show();
 
         LogOut = findViewById(R.id.logout);
         LogOut.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(shelterSpinner.getSelectedItem() != null) {
                     Shelter shelter = (Shelter) shelterSpinner.getSelectedItem();
-                    launchShelterActivity(shelter);
+                    launchShelterActivity(shelter, loggedInUser);
                 } else {
                     Toast.makeText(MainActivity.this, "No shelter selected", Toast.LENGTH_LONG).show();
                 }
@@ -104,10 +104,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void launchShelterActivity(Shelter s) {
+    private void launchShelterActivity(Shelter s, User u) {
         Intent intent = ShelterActivity.makeIntent(this);
         intent.putExtra("selectedShelter", s);
-        intent.putExtra("selectedUser", loggedInUser);
+        intent.putExtra("selectedUser", u);
         startActivity(intent);
     }
 

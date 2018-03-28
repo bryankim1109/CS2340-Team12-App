@@ -17,12 +17,14 @@ public class ShelterActivity extends AppCompatActivity {
 
 
     Intent intent;
-    User loggedInUser = (User) intent.getSerializableExtra("selectedUser");
+    Shelter shelter;
+    User loggedInUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
-        final Shelter shelter = (Shelter) intent.getSerializableExtra("selectedShelter");
+        intent = getIntent();
+        shelter = (Shelter) intent.getSerializableExtra("selectedShelter");
+        loggedInUser = (User) intent.getSerializableExtra("selectedUser");
         setContentView(R.layout.activity_shelter);
 
         TextView tvShelter;
