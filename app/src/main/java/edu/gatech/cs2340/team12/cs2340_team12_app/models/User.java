@@ -77,6 +77,11 @@ public class User extends Account {
     public boolean reserveBed(Shelter s) {return this.bed.reserveBed(s);}
     public boolean freeBed() {return this.bed.freeBed();}
 
+    public void updateUser() {
+        FirebaseInterface fbi = FirebaseInterface.getInstance();
+        fbi.updateUser(this);
+    }
+
 
     public boolean locate() {
         // set longitude and latitude. if successful, return true

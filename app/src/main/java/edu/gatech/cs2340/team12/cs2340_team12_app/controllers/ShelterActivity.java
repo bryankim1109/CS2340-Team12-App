@@ -48,7 +48,7 @@ public class ShelterActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         loggedInUser.freeBed();
-                        //loggedInUser.updateUser();
+                        loggedInUser.updateUser();
                         Toast.makeText(ShelterActivity.this, "Reservation Cancelled", Toast.LENGTH_LONG).show();
                     }
                 });
@@ -71,7 +71,7 @@ public class ShelterActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(ShelterActivity.this, "Reservation Not Successful", Toast.LENGTH_LONG).show();
                     }
-                    //loggedInUser.updateUser();
+                    loggedInUser.updateUser();
                 }
             });
         }
