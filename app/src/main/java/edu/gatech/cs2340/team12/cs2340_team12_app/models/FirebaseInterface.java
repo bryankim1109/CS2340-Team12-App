@@ -68,13 +68,9 @@ public class FirebaseInterface {
 
     //uses shelter name to determine if that shelter is in the database and then updates it
     public boolean updateShelter(Shelter s) {
-        String UID = "";
-        for (Shelter input : shelters) {
-            if (s.getUID().equals(input.getUID())) {
-                UID = input.getUID();
-            }
-        }
-
+        String UID = s.getUID();
+        DatabaseReference shelterDatabase = FirebaseDatabase.getInstance().getReference("Shelters");
+        shelterDatabase.child(UID).setValue(s);
         return false;
     }
 
