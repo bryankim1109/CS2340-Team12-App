@@ -77,6 +77,8 @@ public class FirebaseInterface {
     //for registration, adds a new user
     public boolean addUser(User u) {
         DatabaseReference userDatabase = FirebaseDatabase.getInstance().getReference("Accounts/Users");
+        String key = userDatabase.push().getKey();
+        u.setUID(key);
         userDatabase.push().setValue(u);
         return true;
     }
