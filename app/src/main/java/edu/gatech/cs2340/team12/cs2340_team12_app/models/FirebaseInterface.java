@@ -71,7 +71,7 @@ public class FirebaseInterface {
         String UID = s.getUID();
         DatabaseReference shelterDatabase = FirebaseDatabase.getInstance().getReference("Shelters");
         shelterDatabase.child(UID).setValue(s);
-        return false;
+        return true;
     }
 
     //for registration, adds a new user
