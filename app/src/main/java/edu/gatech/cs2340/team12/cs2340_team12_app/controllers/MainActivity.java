@@ -17,6 +17,7 @@ import edu.gatech.cs2340.team12.cs2340_team12_app.R;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.Shelter;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.ShelterList;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.User;
+import edu.gatech.cs2340.team12.cs2340_team12_app.models.UserList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -68,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
                 if(shelterSpinner.getSelectedItem() != null) {
                     Shelter shelter = (Shelter) shelterSpinner.getSelectedItem();
                     launchShelterActivity(shelter, loggedInUser);
+
+                    UserList users = new UserList();
+                    loggedInUser = users.loginAttempt(loggedInUser.getUsername(), loggedInUser.getPassword());
+
                 } else {
                     Toast.makeText(MainActivity.this, "No shelter selected", Toast.LENGTH_LONG).show();
                 }

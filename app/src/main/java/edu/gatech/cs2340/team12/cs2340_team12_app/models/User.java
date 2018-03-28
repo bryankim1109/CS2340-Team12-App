@@ -98,9 +98,8 @@ public class User extends Account {
         }
     }
 
-    public boolean freeBed(Shelter s) {
+    public boolean freeBed(Shelter shelter) {
         if(!this.hasBed) return false;
-        Shelter shelter = s;
         shelter.setCapacity(shelter.getCapacity() + 1);
         if(FirebaseInterface.updateShelter(shelter)) {
             this.shelterName = "";
