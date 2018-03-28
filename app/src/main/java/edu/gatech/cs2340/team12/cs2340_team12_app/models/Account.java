@@ -1,20 +1,19 @@
 package edu.gatech.cs2340.team12.cs2340_team12_app.models;
 
 
+import java.io.Serializable;
+
 /**
  * Created by Gabriel on 2/25/2018.
  */
 
-public class Account {
+public class Account implements Serializable{
 
-    Account() {
-        username = null;
-        password = null;
-        email = null;
-        lockStatus = false;
+    public Account() {
+
     }
 
-    Account(String username, String password, String email, boolean lockStatus) {
+    public Account(String username, String password, String email, boolean lockStatus) {
         this.username = username;
         this.password = password;
         this.email = email;

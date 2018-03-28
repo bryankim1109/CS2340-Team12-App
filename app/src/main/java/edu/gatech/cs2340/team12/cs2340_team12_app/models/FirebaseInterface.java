@@ -21,15 +21,27 @@ public class FirebaseInterface {
 
     private FirebaseInterface() {
         DatabaseReference shelterDatabase = FirebaseDatabase.getInstance().getReference("Shelters");
-        DatabaseReference userDatabase = FirebaseDatabase.getInstance().getReference("Users");
+        DatabaseReference userDatabase = FirebaseDatabase.getInstance().getReference("Accounts/Users");
 
-        shelterDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        shelterDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot shelterSnapshot : dataSnapshot.getChildren()) {
-                    Shelter shelter = shelterSnapshot.getValue(Shelter.class);
+                    FirebaseInterface.getInstance().getShelters().add(shelterSnapshot.getValue(Shelter.class));
+                }
+            }
 
-                    FirebaseInterface.getInstance().getShelters().add(shelter);
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        userDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                    FirebaseInterface.getInstance().getUsers().add(userSnapshot.getValue(User.class));
                 }
             }
 
@@ -41,9 +53,32 @@ public class FirebaseInterface {
     }
 
     private List<Shelter> shelters = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 
     public List<Shelter> getShelters() {
         return shelters;
+    }
+    public List<User> getUsers() {
+        return users;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    // The methods below are not done
+    ////////////////////////////////////////////////////////////////////////////////////
+
+    //uses shelter name to determine if that shelter is in the database and then updates it
+    public boolean updateShelter(Shelter s) {
+        return false;
+    }
+
+    //for registration, adds a new user
+    public boolean addUser(User u) {
+        return false;
+    }
+
+    //for editing user, updates an existing user
+    public boolean updateUser(User u) {
+        return false;
     }
 
 }

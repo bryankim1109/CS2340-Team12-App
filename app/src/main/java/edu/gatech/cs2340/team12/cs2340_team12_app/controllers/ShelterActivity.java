@@ -10,18 +10,20 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.Shelter;
+import edu.gatech.cs2340.team12.cs2340_team12_app.models.User;
 
 public class ShelterActivity extends AppCompatActivity {
 
+
+    Intent intent = getIntent();
+    Shelter shelter = (Shelter) intent.getSerializableExtra("selectedShelter");
+    User loggedInUser = (User) intent.getSerializableExtra("selectedUser");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shelter);
 
         TextView tvShelter;
-
-        Intent intent = getIntent();
-        Shelter shelter = (Shelter) intent.getSerializableExtra("selectedShelter");
 
         tvShelter = findViewById(R.id.tvShelter);
         tvShelter.setText(shelter.toDisplayInfo());

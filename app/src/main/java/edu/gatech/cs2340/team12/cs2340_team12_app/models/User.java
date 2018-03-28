@@ -7,13 +7,7 @@ package edu.gatech.cs2340.team12.cs2340_team12_app.models;
 public class User extends Account {
 
     public User() {
-        super();
-        ageGroup = null;
-        gender = "N/A";
-        veteranStatus = false;
-        longitude = 0;
-        latitude = 0;
-        hasBed = false;
+
     }
     //for Registration
     public User(String username, String password) {
@@ -23,7 +17,7 @@ public class User extends Account {
         veteranStatus = false;
         longitude = 0;
         latitude = 0;
-        hasBed = false;
+        bed = new Bed();
     }
     //for Search
     public User(String ageGroup, String gender, boolean veteranStatus) {
@@ -33,16 +27,16 @@ public class User extends Account {
         this.veteranStatus = veteranStatus;
         longitude = 0;
         latitude = 0;
-        hasBed = false;
+        bed = new Bed();
     }
-    public User(String username, String password, String email, boolean lockStatus, String ageGroup, String gender, boolean veteranStatus, boolean hasBed) {
+    public User(String username, String password, String email, boolean lockStatus, String ageGroup, String gender, boolean veteranStatus, Bed hasBed) {
         super(username, password, email, lockStatus);
         this.ageGroup = ageGroup;
         this.gender = gender;
         this.veteranStatus = veteranStatus;
         longitude = 0;
         latitude = 0;
-        this.hasBed = hasBed;
+        this.bed = hasBed;
     }
 
     private String ageGroup;
@@ -51,7 +45,7 @@ public class User extends Account {
     private boolean veteranStatus;
     private double longitude;
     private double latitude;
-    private boolean hasBed;
+    private Bed bed;
 
     public String getAgeGroup() {
         return ageGroup;
@@ -78,8 +72,11 @@ public class User extends Account {
     public double getLatitude() { return latitude; }
     public void setLatitude(double latitude) { this.latitude = latitude; }
 
-    public boolean getBedStatus() {return hasBed;}
-    public void setBedStatus(boolean hasBed) {this.hasBed = hasBed;}
+    public boolean hasBed() {return this.bed.getHasBed();}
+    public String getShelterOfBed() {return this.bed.getShelterName();}
+    public boolean reserveBed(Shelter s) {return this.bed.reserveBed(s);}
+    public boolean freeBed() {return this.bed.freeBed();}
+
 
     public boolean locate() {
         // set longitude and latitude. if successful, return true

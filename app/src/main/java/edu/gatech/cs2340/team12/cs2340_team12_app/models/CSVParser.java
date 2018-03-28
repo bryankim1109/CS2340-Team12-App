@@ -23,7 +23,7 @@ public class CSVParser {
         reader.readNext();
         Shelter shelter;
         while ((nextLine = reader.readNext()) != null) {
-                shelter = new Shelter(nextLine[1], nextLine[2], nextLine[3],
+                shelter = new Shelter(nextLine[1], Integer.parseInt(nextLine[2]), nextLine[3],
                     nextLine[4], nextLine[5], nextLine[6], nextLine[8]);
             mDatabase.push().setValue(shelter);
         }

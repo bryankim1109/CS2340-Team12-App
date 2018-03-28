@@ -16,6 +16,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.RegisteredUserMap;
+import edu.gatech.cs2340.team12.cs2340_team12_app.models.User;
+import edu.gatech.cs2340.team12.cs2340_team12_app.models.UserList;
 
 public class LoginScreenActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -46,10 +48,11 @@ public class LoginScreenActivity extends AppCompatActivity {
                 String userString = username.getText().toString();
                 String passString = password.getText().toString();
 
-                RegisteredUserMap userMap = RegisteredUserMap.getInstance();
+                UserList users = new UserList();
 
-                if(userMap.loginAttempt(userString, passString)) {
-                    launchMainActivity();
+                User u = users.loginAttempt(userString, passString);
+                if(u != null) {
+                    launchMainActivity(u);
                     finish();
                 } else {
                     Toast.makeText(LoginScreenActivity.this, "Incorrect username or password", Toast.LENGTH_LONG).show();
@@ -58,8 +61,9 @@ public class LoginScreenActivity extends AppCompatActivity {
         });
     }
 
-    private void launchMainActivity() {
+    private void launchMainActivity(User u) {
         Intent intent = MainActivity.makeIntent(this);
+        intent.putExtra("selectedUser", u);
         startActivity(intent);
     }
 

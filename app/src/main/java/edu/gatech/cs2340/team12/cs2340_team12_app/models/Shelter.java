@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 public class Shelter implements Serializable{
     private String shelterName;
-    private String capacity;
+    private int capacity;
     private String gender;
     private String ageGroup;
     private String longitude;
@@ -22,7 +22,7 @@ public class Shelter implements Serializable{
     }
 
     // Used for parser
-    public Shelter(String shelterName, String capacity, String gender,
+    public Shelter(String shelterName, int capacity, String gender,
                    String longitude, String latitude, String address, String phoneNumber) {
         this.shelterName = shelterName;
         this.capacity = capacity;
@@ -35,7 +35,7 @@ public class Shelter implements Serializable{
         this.veteranStatus = false;
     }
 
-    public Shelter(String shelterName, String capacity, String gender, String ageGroup,
+    public Shelter(String shelterName, int capacity, String gender, String ageGroup,
                    String longitude, String latitude, String address, String phoneNumber, boolean veteranStatus) {
         this.shelterName = shelterName;
         this.capacity = capacity;
@@ -52,7 +52,7 @@ public class Shelter implements Serializable{
         return shelterName;
     }
 
-    public String getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
 
@@ -88,7 +88,7 @@ public class Shelter implements Serializable{
         this.shelterName = shelterName;
     }
 
-    public void setCapacity(String capacity) {
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 

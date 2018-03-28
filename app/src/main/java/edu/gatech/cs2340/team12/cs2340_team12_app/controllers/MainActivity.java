@@ -20,6 +20,9 @@ import edu.gatech.cs2340.team12.cs2340_team12_app.models.User;
 
 public class MainActivity extends AppCompatActivity {
 
+    Intent intent = getIntent();
+    User loggedInUser = (User) intent.getSerializableExtra("selectedUser");
+
     ShelterList myShelterList = new ShelterList();
     Spinner shelterSpinner;
     Button LogOut;
@@ -102,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
     private void launchShelterActivity(Shelter s) {
         Intent intent = ShelterActivity.makeIntent(this);
         intent.putExtra("selectedShelter", s);
+        intent.putExtra("selectedUser", loggedInUser);
         startActivity(intent);
     }
 
