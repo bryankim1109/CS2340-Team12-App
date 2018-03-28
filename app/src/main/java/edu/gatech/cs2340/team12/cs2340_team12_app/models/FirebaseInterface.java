@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.team12.cs2340_team12_app.models;
 
+import android.util.Log;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -64,7 +66,8 @@ public class FirebaseInterface {
 
     //uses shelter name to determine if that shelter is in the database and then updates it
     public static boolean updateShelter(Shelter s) {
-        String UID = s.getUID();
+        Log.d("Shelter UID", "The UID is " + s.getUid());
+        String UID = s.getUid();
         DatabaseReference shelterDatabase = FirebaseDatabase.getInstance().getReference("Shelters");
         shelterDatabase.child(UID).setValue(s);
         return true;

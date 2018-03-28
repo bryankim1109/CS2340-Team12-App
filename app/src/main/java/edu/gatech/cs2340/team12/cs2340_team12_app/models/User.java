@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.team12.cs2340_team12_app.models;
 
+import android.util.Log;
+
 /**
  * Created by Gabriel on 2/27/2018.
  */
@@ -86,7 +88,6 @@ public class User extends Account {
     public boolean reserveBed(Shelter shelter) {
         if(this.hasBed) return false;
         if(shelter.getCapacity() < 1) return false;
-
         shelter.setCapacity(shelter.getCapacity() - 1);
         if(FirebaseInterface.updateShelter(shelter)) {
             this.shelterName = shelter.getShelterName();
