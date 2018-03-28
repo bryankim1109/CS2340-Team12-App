@@ -78,7 +78,10 @@ public class FirebaseInterface {
 
     //for editing user, updates an existing user
     public boolean updateUser(User u) {
-        return false;
+        String UID = u.getUID();
+        DatabaseReference userDatabase = FirebaseDatabase.getInstance().getReference("Accounts/Users");
+        userDatabase.child(UID).setValue(u);
+        return true;
     }
 
 }
