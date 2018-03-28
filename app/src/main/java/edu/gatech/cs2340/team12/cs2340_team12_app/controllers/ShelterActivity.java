@@ -44,31 +44,27 @@ public class ShelterActivity extends AppCompatActivity {
 
         Button reserve;
         reserve = findViewById(R.id.reserveBtn);
-        if(loggedInUser.hasBed()) {
-            if(loggedInUser.getShelterOfBed().equals(shelter.getShelterName())) {
+        if(loggedInUser.getHasBed()) {
+            if(loggedInUser.getShelterName().equals(shelter.getShelterName())) {
                 reserve.setText("Cancel Reservation");
-                reserve.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        loggedInUser.freeBed();
-                        loggedInUser.updateUser();
-                        Toast.makeText(ShelterActivity.this, "Reservation Cancelled", Toast.LENGTH_LONG).show();
-                    }
-                });
             } else {
-                reserve.setText("Cancel your Current Reservation first");
-                reserve.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Toast.makeText(ShelterActivity.this, "Cancel your current Reservation first", Toast.LENGTH_LONG).show();
-                    }
-                });
+                reserve.setText("Reserve Bed");
             }
         } else {
             reserve.setText("Reserve Bed");
-            reserve.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        }
+        reserve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(loggedInUser.getHasBed()) {
+                    if (loggedInUser.getShelterName().equals(shelter.getShelterName())) {
+                        loggedInUser.freeBed();
+                        loggedInUser.updateUser();
+                        Toast.makeText(ShelterActivity.this, "Reservation Cancelled", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(ShelterActivity.this, "Cancel your current Reservation first", Toast.LENGTH_LONG).show();
+                    }
+                } else {
                     if(loggedInUser.reserveBed(shelter)) {
                         Toast.makeText(ShelterActivity.this, "Reservation Successful", Toast.LENGTH_LONG).show();
                     } else {
@@ -76,8 +72,8 @@ public class ShelterActivity extends AppCompatActivity {
                     }
                     loggedInUser.updateUser();
                 }
-            });
-        }
+            }
+        });
     }
 
     public static Intent makeIntent(Context context) {
