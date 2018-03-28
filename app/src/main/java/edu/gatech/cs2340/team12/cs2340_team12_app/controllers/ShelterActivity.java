@@ -58,7 +58,7 @@ public class ShelterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(loggedInUser.getHasBed()) {
                     if (loggedInUser.getShelterName().equals(shelter.getShelterName())) {
-                        loggedInUser.freeBed();
+                        loggedInUser.freeBed(shelter);
                         loggedInUser.updateUser();
                         Toast.makeText(ShelterActivity.this, "Reservation Cancelled", Toast.LENGTH_LONG).show();
                     } else {

@@ -85,11 +85,10 @@ public class User extends Account {
 
     public boolean reserveBed(Shelter shelter) {
         if(this.hasBed) return false;
-        FirebaseInterface fI = FirebaseInterface.getInstance();
         if(shelter.getCapacity() < 1) return false;
 
         shelter.setCapacity(shelter.getCapacity() - 1);
-        if(fI.updateShelter(shelter)) {
+        if(FirebaseInterface.updateShelter(shelter)) {
             this.shelterName = shelter.getShelterName();
             this.hasBed = true;
             return true;
@@ -98,23 +97,21 @@ public class User extends Account {
         }
     }
 
-    public boolean freeBed() {
+    public boolean freeBed(Shelter s) {
         if(!this.hasBed) return false;
-        FirebaseInterface fI = FirebaseInterface.getInstance();
-        Shelter shelter = null;
-        for(Shelter s : fI.getShelters()) {
-            if(s.getShelterName().equals(this.shelterName)) {
-                shelter = s;
-            }
-        }
-        if(shelter == null) return false;
+        Shelter shelter = s;
         shelter.setCapacity(shelter.getCapacity() + 1);
-        return fI.updateShelter(shelter);
+        if(FirebaseInterface.updateShelter(shelter)) {
+            this.shelterName = "";
+            this.hasBed = false;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void updateUser() {
-        FirebaseInterface fbi = FirebaseInterface.getInstance();
-        fbi.updateUser(this);
+        FirebaseInterface.updateUser(this);
     }
 
 

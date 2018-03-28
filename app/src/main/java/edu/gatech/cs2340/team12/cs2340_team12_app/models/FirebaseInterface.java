@@ -62,12 +62,8 @@ public class FirebaseInterface {
         return users;
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////
-    // The methods below are not done
-    ////////////////////////////////////////////////////////////////////////////////////
-
     //uses shelter name to determine if that shelter is in the database and then updates it
-    public boolean updateShelter(Shelter s) {
+    public static boolean updateShelter(Shelter s) {
         String UID = s.getUID();
         DatabaseReference shelterDatabase = FirebaseDatabase.getInstance().getReference("Shelters");
         shelterDatabase.child(UID).setValue(s);
@@ -75,7 +71,7 @@ public class FirebaseInterface {
     }
 
     //for registration, adds a new user
-    public boolean addUser(User u) {
+    public static boolean addUser(User u) {
         DatabaseReference userDatabase = FirebaseDatabase.getInstance().getReference("Accounts/Users");
         String key = userDatabase.push().getKey();
         u.setUID(key);
@@ -84,7 +80,7 @@ public class FirebaseInterface {
     }
 
     //for editing user, updates an existing user
-    public boolean updateUser(User u) {
+    public static boolean updateUser(User u) {
         String UID = u.getUID();
         DatabaseReference userDatabase = FirebaseDatabase.getInstance().getReference("Accounts/Users");
         userDatabase.child(UID).setValue(u);
