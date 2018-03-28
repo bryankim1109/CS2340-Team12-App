@@ -16,12 +16,13 @@ import edu.gatech.cs2340.team12.cs2340_team12_app.models.User;
 public class ShelterActivity extends AppCompatActivity {
 
 
-    Intent intent = getIntent();
-    Shelter shelter = (Shelter) intent.getSerializableExtra("selectedShelter");
+    Intent intent;
     User loggedInUser = (User) intent.getSerializableExtra("selectedUser");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        final Shelter shelter = (Shelter) intent.getSerializableExtra("selectedShelter");
         setContentView(R.layout.activity_shelter);
 
         TextView tvShelter;

@@ -62,7 +62,7 @@ public class LoginScreenActivity extends AppCompatActivity {
     }
 
     private void launchMainActivity(User u) {
-        Intent intent = MainActivity.makeIntent(this);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("selectedUser", u);
         startActivity(intent);
     }

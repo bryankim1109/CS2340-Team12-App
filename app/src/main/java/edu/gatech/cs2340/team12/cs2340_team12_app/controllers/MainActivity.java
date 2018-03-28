@@ -20,8 +20,8 @@ import edu.gatech.cs2340.team12.cs2340_team12_app.models.User;
 
 public class MainActivity extends AppCompatActivity {
 
-    Intent intent = getIntent();
-    User loggedInUser = (User) intent.getSerializableExtra("selectedUser");
+    Intent intent;
+    User loggedInUser;
 
     ShelterList myShelterList = new ShelterList();
     Spinner shelterSpinner;
@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     Button Search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent intent = getIntent();
+        User loggedInUser = (User) intent.getSerializableExtra("selectedUser");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
