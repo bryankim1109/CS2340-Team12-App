@@ -18,6 +18,8 @@ public class Shelter implements Serializable{
     private String phoneNumber;
     private boolean veteranStatus;
 
+    private String UID;
+
     public Shelter() {
     }
 
@@ -119,6 +121,8 @@ public class Shelter implements Serializable{
     public void setVeteranStatus(boolean veteranStatus) {
         this.veteranStatus = veteranStatus;
     }
+
+    public String getUID() {return UID; }
 
     public String toString() {
         return shelterName;
