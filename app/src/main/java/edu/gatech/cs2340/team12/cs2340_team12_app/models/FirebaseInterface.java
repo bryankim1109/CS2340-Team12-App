@@ -68,12 +68,19 @@ public class FirebaseInterface {
 
     //uses shelter name to determine if that shelter is in the database and then updates it
     public boolean updateShelter(Shelter s) {
-        return false;
+        String UID = s.getUID();
+        DatabaseReference shelterDatabase = FirebaseDatabase.getInstance().getReference("Shelters");
+        shelterDatabase.child(UID).setValue(s);
+        return true;
     }
 
     //for registration, adds a new user
     public boolean addUser(User u) {
-        return false;
+        DatabaseReference userDatabase = FirebaseDatabase.getInstance().getReference("Accounts/Users");
+        String key = userDatabase.push().getKey();
+        u.setUID(key);
+        userDatabase.push().setValue(u);
+        return true;
     }
 
     //for editing user, updates an existing user
