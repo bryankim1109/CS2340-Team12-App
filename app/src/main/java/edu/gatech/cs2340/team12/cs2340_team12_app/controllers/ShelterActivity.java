@@ -39,6 +39,9 @@ public class ShelterActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.putExtra("UID", loggedInUser.getUID());
+                setResult(RESULT_OK, intent);
                 finish();
             }
         });

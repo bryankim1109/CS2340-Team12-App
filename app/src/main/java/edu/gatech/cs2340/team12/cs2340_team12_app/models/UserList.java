@@ -37,4 +37,18 @@ public class UserList {
 
     }
 
+    public User getUserFromUID(String UID) {
+        for(User u : allUsers) {
+            if(u.getUID().equals(UID)) {
+                return u;
+            }
+        }
+        return null;
+    }
+
+    public void updateUserList() {
+        FirebaseInterface fbi = FirebaseInterface.getInstance();
+        allUsers = new ArrayList<>(fbi.getUsers());
+    }
+
 }

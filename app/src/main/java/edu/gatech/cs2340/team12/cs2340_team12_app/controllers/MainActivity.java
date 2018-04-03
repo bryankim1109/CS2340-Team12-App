@@ -106,6 +106,19 @@ public class MainActivity extends AppCompatActivity {
                 shelterSpinner.setAdapter(adapter);
                 shelterSpinner.setSelection(0);
             }
+        } else if(requestCode == 2) {
+            if(resultCode == RESULT_OK) {
+                String UID = data.getStringExtra("UID");
+                UserList uList = new UserList();
+                loggedInUser = uList.getUserFromUID(UID);
+
+                ShelterList shelters = new ShelterList();
+                List<Shelter> allShelts = shelters.getAllShelters();
+                ArrayAdapter<Shelter> adapter = new ArrayAdapter(MainActivity.this,android.R.layout.simple_spinner_item, allShelts);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                shelterSpinner.setAdapter(adapter);
+                shelterSpinner.setSelection(0);
+            }
         }
     }
 
@@ -113,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = ShelterActivity.makeIntent(this);
         intent.putExtra("selectedShelter", s);
         intent.putExtra("selectedUser", u);
-        startActivity(intent);
+        startActivityForResult(intent, 2);
     }
 
     private void launchSearchActivity() {
