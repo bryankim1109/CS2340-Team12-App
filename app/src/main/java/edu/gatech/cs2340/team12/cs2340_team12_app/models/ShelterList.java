@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.team12.cs2340_team12_app.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.util.List;
  * Created by caleb on 2/27/2018.
  */
 
-public class ShelterList {
+public class ShelterList implements Serializable{
 
     private List<Shelter> allShelters;
     private List<Shelter> filteredShelters;

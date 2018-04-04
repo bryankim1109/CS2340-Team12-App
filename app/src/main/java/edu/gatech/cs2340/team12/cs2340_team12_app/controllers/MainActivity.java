@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.List;
 
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     Button LogOut;
     Button Select;
     Button Search;
+    Button Map;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +88,14 @@ public class MainActivity extends AppCompatActivity {
                 launchSearchActivity();
             }
         });
+
+        Map = findViewById(R.id.map);
+        Map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchMapsActivity(myShelterList.getFilteredShelters());
+            }
+        });
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -132,6 +142,12 @@ public class MainActivity extends AppCompatActivity {
     private void launchSearchActivity() {
         Intent intent = SearchActivity.makeIntent(this);
         startActivityForResult(intent, 1);
+    }
+
+    private void launchMapsActivity(List<Shelter> filtList) {
+        Intent intent = MapsActivity.makeIntent(this);
+        intent.putExtra("ShelterList", (Serializable)filtList);
+        startActivity(intent);
     }
 
     public static Intent makeIntent(Context context) {
