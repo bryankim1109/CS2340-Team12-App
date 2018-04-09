@@ -9,11 +9,11 @@ import java.io.Serializable;
 
 public class Account implements Serializable{
 
-    public Account() {
+    Account() {
 
     }
 
-    public Account(String username, String password, String email, boolean lockStatus) {
+    Account(String username, String password, String email, boolean lockStatus) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -25,10 +25,6 @@ public class Account implements Serializable{
     private String email;
     private boolean lockStatus;
     private String UID;
-
-    public boolean checkPassword(String input) {
-        return password.equals(input);
-    }
 
     public String getUsername() {
         return username;
@@ -47,7 +43,7 @@ public class Account implements Serializable{
     public boolean getLockStatus() {
         return lockStatus;
     }
-    public void setLockStatus(boolean lockStatus) {
+    void setLockStatus(boolean lockStatus) {
         this.lockStatus = lockStatus;
     }
 

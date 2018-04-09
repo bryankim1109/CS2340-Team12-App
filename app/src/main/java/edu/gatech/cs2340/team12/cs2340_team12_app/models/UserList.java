@@ -31,8 +31,7 @@ public class UserList {
             if (u.getUsername().equals(user)) return -1;
         }
         if(!pass1.equals(pass2)) return 0;
-        FirebaseInterface fbi = FirebaseInterface.getInstance();
-        fbi.addUser(new User(user, pass1));
+        FirebaseInterface.addUser(new User(user, pass1));
         return 1;
 
     }

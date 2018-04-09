@@ -38,7 +38,8 @@ public class Shelter implements Serializable{
     }
 
     public Shelter(String shelterName, int capacity, String gender, String ageGroup,
-                   String longitude, String latitude, String address, String phoneNumber, boolean veteranStatus) {
+                   String longitude, String latitude, String address, String phoneNumber,
+                   boolean veteranStatus) {
         this.shelterName = shelterName;
         this.capacity = capacity;
         this.gender = gender;
@@ -129,7 +130,7 @@ public class Shelter implements Serializable{
         return shelterName;
     }
 
-    public String toDisplayInfo() {
+    public CharSequence toDisplayInfo() {
         return "Shelter name: " + shelterName + "\n" +
                 "Capacity: " + capacity + "\n" +
                 "Gender: " + gender + "\n" +

@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
-import edu.gatech.cs2340.team12.cs2340_team12_app.models.RegisteredUserMap;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.UserList;
 
 public class RegistrationActivity extends AppCompatActivity {
@@ -47,11 +46,14 @@ public class RegistrationActivity extends AppCompatActivity {
                 int regSuccess = users.registerAttempt(userString, passString, passString2);
 
                 if(regSuccess == -1) {
-                    Toast.makeText(RegistrationActivity.this, "This username is already taken", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegistrationActivity.this,
+                            "This username is already taken", Toast.LENGTH_LONG).show();
                 } else if(regSuccess == 0){
-                    Toast.makeText(RegistrationActivity.this, "The passwords do not match", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegistrationActivity.this,
+                            "The passwords do not match", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(RegistrationActivity.this, "Registration Successful", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegistrationActivity.this,
+                            "Registration Successful", Toast.LENGTH_LONG).show();
                     finish();
                 }
             }

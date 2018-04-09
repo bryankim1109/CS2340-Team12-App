@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.team12.cs2340_team12_app.models;
 
-import android.util.Log;
-
 /**
  * Created by Gabriel on 2/27/2018.
  */
@@ -33,7 +31,9 @@ public class User extends Account {
         hasBed = false;
         shelterName = "";
     }
-    public User(String username, String password, String email, boolean lockStatus, String ageGroup, String gender, boolean veteranStatus, boolean hasBed, String shelterName) {
+    public User(String username, String password, String email, boolean lockStatus,
+                String ageGroup, String gender, boolean veteranStatus, boolean hasBed,
+                String shelterName) {
         super(username, password, email, lockStatus);
         this.ageGroup = ageGroup;
         this.gender = gender;

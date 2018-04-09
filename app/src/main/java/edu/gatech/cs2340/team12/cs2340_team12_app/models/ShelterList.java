@@ -28,20 +28,22 @@ public class ShelterList implements Serializable{
 
     public void filterShelters(User user, String name) {
         filteredShelters.clear();
-        if (user != null && name != null) {
+        if ((user != null) && (name != null)) {
             String userGender = user.getGender();
             String userAgeGroup = user.getAgeGroup();
             for (Shelter shelter : allShelters) {
                 String gender = shelter.getGender();
                 String ageGroup = shelter.getAgeGroup();
-                if (userGender.equals("Anyone") || gender.equals("Anyone") || (userGender.equals("Male") && gender.contains("Men")) ||
-                        (userGender.equals("Female") && gender.contains("Women"))) {
+                if ("Anyone".equals(userGender) || "Anyone".equals(gender) ||
+                        ("Male".equals(userGender) && gender.contains("Men")) ||
+                        ("Female".equals(userGender) && gender.contains("Women"))) {
 
-                    if (userAgeGroup.equals("Anyone") || ageGroup.equals("Anyone") || (userAgeGroup.equals("Young Adults") && ageGroup.contains("Young Adults")) ||
-                            (userAgeGroup.equals("Family with newborns") && ageGroup.contains("Families")) ||
-                            (userAgeGroup.equals("Children") && ageGroup.contains("Children"))) {
+                    if ("Anyone".equals(userAgeGroup) || "Anyone".equals(ageGroup) ||
+                            ("Young Adults".equals(userAgeGroup) && ageGroup.contains("Young Adults")) ||
+                            ("Family with newborns".equals(userAgeGroup) && ageGroup.contains("Families")) ||
+                            ("Children".equals(userAgeGroup) && ageGroup.contains("Children"))) {
 
-                        if (name.equals("") || name.equals("Shelter Name") || name.equals(shelter.getShelterName())) {
+                        if ("".equals(name) || "Shelter Name".equals(name) || name.equals(shelter.getShelterName())) {
                             filteredShelters.add(shelter);
                         }
                     }

@@ -15,7 +15,6 @@ import java.util.List;
 
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.Shelter;
-import edu.gatech.cs2340.team12.cs2340_team12_app.models.User;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -36,7 +35,8 @@ public class SearchActivity extends AppCompatActivity {
         genders.add("Anyone");
         genders.add("Male");
         genders.add("Female");
-        ArrayAdapter<Shelter> genderAdapter = new ArrayAdapter(SearchActivity.this,android.R.layout.simple_spinner_item, genders);
+        ArrayAdapter<Shelter> genderAdapter = new ArrayAdapter(SearchActivity.this,
+                android.R.layout.simple_spinner_item, genders);
         genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genderSpinner.setAdapter(genderAdapter);
         genderSpinner.setSelection(0);
@@ -46,7 +46,8 @@ public class SearchActivity extends AppCompatActivity {
         ageGroups.add("Family with newborns");
         ageGroups.add("Children");
         ageGroups.add("Young Adults");
-        final ArrayAdapter<Shelter> ageGroupAdapter = new ArrayAdapter(SearchActivity.this,android.R.layout.simple_spinner_item, ageGroups);
+        final ArrayAdapter<Shelter> ageGroupAdapter = new ArrayAdapter(SearchActivity.this,
+                android.R.layout.simple_spinner_item, ageGroups);
         ageGroupAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ageGroupSpinner.setAdapter(ageGroupAdapter);
         ageGroupSpinner.setSelection(0);

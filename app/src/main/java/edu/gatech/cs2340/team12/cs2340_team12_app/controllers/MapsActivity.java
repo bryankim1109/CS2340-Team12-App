@@ -19,8 +19,6 @@ import edu.gatech.cs2340.team12.cs2340_team12_app.models.Shelter;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,15 +41,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
         Intent intent = getIntent();
-        List<Shelter> filteredList = (List<Shelter>)intent.getSerializableExtra("ShelterList");
+        Iterable<Shelter> filteredList = (List<Shelter>)intent
+                .getSerializableExtra("ShelterList");
         // Add a marker in Sydney and move the camera
         for(Shelter s : filteredList) {
-            LatLng shelterPos = new LatLng(Double.parseDouble(s.getLatitude()), Double.parseDouble(s.getLongitude()));
-            mMap.addMarker(new MarkerOptions().position(shelterPos).title(s.getShelterName()).snippet(s.getPhoneNumber()));
+            LatLng shelterPos = new LatLng(Double.parseDouble(s.getLatitude()),
+                    Double.parseDouble(s.getLongitude()));
+            googleMap.addMarker(new MarkerOptions().position(shelterPos).title(s.getShelterName())
+                    .snippet(s.getPhoneNumber()));
         }
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(33.749, -84.388), 11));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(33.749, -84.388),
+                11));
     }
 
 

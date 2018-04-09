@@ -14,7 +14,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
-//import edu.gatech.cs2340.team12.cs2340_team12_app.models.CSVParser;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.Shelter;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.ShelterList;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.User;
@@ -22,75 +21,65 @@ import edu.gatech.cs2340.team12.cs2340_team12_app.models.UserList;
 
 public class MainActivity extends AppCompatActivity {
 
-    Intent intent;
-    User loggedInUser;
+    private User loggedInUser;
 
-    ShelterList myShelterList = new ShelterList();
-    Spinner shelterSpinner;
-    Button LogOut;
-    Button Select;
-    Button Search;
-    Button Map;
+    private ShelterList myShelterList = new ShelterList();
+    private Spinner shelterSpinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        intent = getIntent();
+        Intent intent = getIntent();
         loggedInUser = (User) intent.getSerializableExtra("selectedUser");
 
         setContentView(R.layout.activity_main);
 
-//        if(false) {
-//            try {
-//                CSVParser.parse(getResources().openRawResource(R.raw.homeless_shelter_database));
-//            }
-//            catch(Exception a){
-//                Toast.makeText(MainActivity.this, "Parser doesn't work", Toast.LENGTH_LONG).show();
-//            }
-//        }
-
         myShelterList.resetFilteredShelters();
         List<Shelter> shelters = myShelterList.getFilteredShelters();
         shelterSpinner = findViewById(R.id.shelterSpinner);
-        ArrayAdapter<Shelter> adapter = new ArrayAdapter(MainActivity.this,android.R.layout.simple_spinner_item, shelters);
+        ArrayAdapter<Shelter> adapter = new ArrayAdapter(MainActivity.this,
+                android.R.layout.simple_spinner_item, shelters);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         shelterSpinner.setAdapter(adapter);
         shelterSpinner.setSelection(0);
 
-        LogOut = findViewById(R.id.logout);
-        LogOut.setOnClickListener(new View.OnClickListener() {
+        Button logOut = findViewById(R.id.logout);
+        logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
 
-        Select = findViewById(R.id.select);
-        Select.setOnClickListener(new View.OnClickListener() {
+        Button select = findViewById(R.id.select);
+        select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(shelterSpinner.getSelectedItem() != null) {
-                    Shelter shelter = (Shelter) shelterSpinner.getSelectedItem();
+                    Serializable shelter = (Shelter) shelterSpinner.getSelectedItem();
                     launchShelterActivity(shelter, loggedInUser);
 
                     UserList users = new UserList();
-                    loggedInUser = users.loginAttempt(loggedInUser.getUsername(), loggedInUser.getPassword());
+                    loggedInUser = users.loginAttempt(loggedInUser.getUsername(),
+                            loggedInUser.getPassword());
 
                 } else {
-                    Toast.makeText(MainActivity.this, "No shelter selected", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "No shelter selected",
+                            Toast.LENGTH_LONG).show();
                 }
             }
         });
 
-        Search = findViewById(R.id.Search);
-        Search.setOnClickListener(new View.OnClickListener() {
+        Button search = findViewById(R.id.Search);
+        search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 launchSearchActivity();
             }
         });
 
-        Map = findViewById(R.id.map);
-        Map.setOnClickListener(new View.OnClickListener() {
+        Button map = findViewById(R.id.map);
+        map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 launchMapsActivity(myShelterList.getFilteredShelters());
@@ -98,20 +87,21 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
                 String name = data.getStringExtra("name");
-                User u = new User(data.getStringExtra("ageGroup"), data.getStringExtra("gender"), false);
+                User u = new User(data.getStringExtra("ageGroup"),
+                        data.getStringExtra("gender"), false);
                 myShelterList.filterShelters(u, name);
                 List<Shelter> filtShelts = myShelterList.getFilteredShelters();
-                //Toast.makeText(MainActivity.this, "Name: " + name, Toast.LENGTH_LONG).show();
-                //Toast.makeText(MainActivity.this, "Gender: " + u.getGender(), Toast.LENGTH_LONG).show();
-                //Toast.makeText(MainActivity.this, "AgeGroup: " + u.getAgeGroup(), Toast.LENGTH_LONG).show();
-                Toast.makeText(MainActivity.this, "Size: " + myShelterList.getFilteredShelters().size(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Size: " + myShelterList
+                        .getFilteredShelters().size(), Toast.LENGTH_LONG).show();
 
-                ArrayAdapter<Shelter> adapter = new ArrayAdapter(MainActivity.this,android.R.layout.simple_spinner_item, filtShelts);
+                ArrayAdapter<Shelter> adapter = new ArrayAdapter(MainActivity.this,
+                        android.R.layout.simple_spinner_item, filtShelts);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 shelterSpinner.setAdapter(adapter);
                 shelterSpinner.setSelection(0);
@@ -124,7 +114,8 @@ public class MainActivity extends AppCompatActivity {
 
                 ShelterList shelters = new ShelterList();
                 List<Shelter> allShelts = shelters.getAllShelters();
-                ArrayAdapter<Shelter> adapter = new ArrayAdapter(MainActivity.this,android.R.layout.simple_spinner_item, allShelts);
+                ArrayAdapter<Shelter> adapter = new ArrayAdapter(MainActivity.this,
+                        android.R.layout.simple_spinner_item, allShelts);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 shelterSpinner.setAdapter(adapter);
                 shelterSpinner.setSelection(0);
@@ -132,10 +123,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void launchShelterActivity(Shelter s, User u) {
+    private void launchShelterActivity(Serializable shelter, Serializable user) {
         Intent intent = ShelterActivity.makeIntent(this);
-        intent.putExtra("selectedShelter", s);
-        intent.putExtra("selectedUser", u);
+        intent.putExtra("selectedShelter", shelter);
+        intent.putExtra("selectedUser", user);
         startActivityForResult(intent, 2);
     }
 

@@ -15,21 +15,25 @@ import java.util.List;
  * Created by Gabriel on 3/9/2018.
  */
 
-public class FirebaseInterface {
+public final class FirebaseInterface {
 
     private static final FirebaseInterface ourInstance = new FirebaseInterface();
+
 
     public static FirebaseInterface getInstance() { return ourInstance; }
 
     private FirebaseInterface() {
-        DatabaseReference shelterDatabase = FirebaseDatabase.getInstance().getReference("Shelters");
-        DatabaseReference userDatabase = FirebaseDatabase.getInstance().getReference("Accounts/Users");
+        DatabaseReference shelterDatabase = FirebaseDatabase.getInstance()
+                .getReference("Shelters");
+        DatabaseReference userDatabase = FirebaseDatabase.getInstance()
+                .getReference("Accounts/Users");
 
         shelterDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot shelterSnapshot : dataSnapshot.getChildren()) {
-                    FirebaseInterface.getInstance().getShelters().add(shelterSnapshot.getValue(Shelter.class));
+                    FirebaseInterface.getInstance().getShelters()
+                            .add(shelterSnapshot.getValue(Shelter.class));
                 }
             }
 
@@ -43,7 +47,8 @@ public class FirebaseInterface {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                    FirebaseInterface.getInstance().getUsers().add(userSnapshot.getValue(User.class));
+                    FirebaseInterface.getInstance().getUsers()
+                            .add(userSnapshot.getValue(User.class));
                 }
             }
 
@@ -68,14 +73,16 @@ public class FirebaseInterface {
     public static boolean updateShelter(Shelter s) {
         Log.d("Shelter UID", "The UID is " + s.getUid());
         String UID = s.getUid();
-        DatabaseReference shelterDatabase = FirebaseDatabase.getInstance().getReference("Shelters");
+        DatabaseReference shelterDatabase = FirebaseDatabase.getInstance()
+                .getReference("Shelters");
         shelterDatabase.child(UID).setValue(s);
         return true;
     }
 
     //for registration, adds a new user
     public static boolean addUser(User u) {
-        DatabaseReference userDatabase = FirebaseDatabase.getInstance().getReference("Accounts/Users");
+        DatabaseReference userDatabase = FirebaseDatabase.getInstance()
+                .getReference("Accounts/Users");
         String key = userDatabase.push().getKey();
         u.setUID(key);
         userDatabase.child(key).setValue(u);
@@ -85,7 +92,8 @@ public class FirebaseInterface {
     //for editing user, updates an existing user
     public static boolean updateUser(User u) {
         String UID = u.getUID();
-        DatabaseReference userDatabase = FirebaseDatabase.getInstance().getReference("Accounts/Users");
+        DatabaseReference userDatabase = FirebaseDatabase.getInstance()
+                .getReference("Accounts/Users");
         userDatabase.child(UID).setValue(u);
         return true;
     }
