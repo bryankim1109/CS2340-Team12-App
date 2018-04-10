@@ -19,6 +19,12 @@ public class ShelterList implements Serializable{
         filteredShelters = new ArrayList<>(allShelters);
     }
 
+    // used for junit testing for the filterShelters method
+    public ShelterList(List<Shelter> input) {
+        allShelters = new ArrayList<>(input);
+        filteredShelters = new ArrayList<>(allShelters);
+    }
+
     public List<Shelter> getAllShelters() {
         return allShelters;
     }

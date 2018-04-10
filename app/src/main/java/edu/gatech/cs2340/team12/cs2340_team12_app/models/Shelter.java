@@ -51,6 +51,19 @@ public class Shelter implements Serializable{
         this.veteranStatus = veteranStatus;
     }
 
+    //Used for JUnit testing
+    public Shelter(String shelterName, String gender, String ageGroup) {
+        this.shelterName = shelterName;
+        this.capacity = 0;
+        this.gender = gender;
+        this.ageGroup = ageGroup;
+        this.longitude = "";
+        this.latitude = "";
+        this.address = "";
+        this.phoneNumber = "";
+        this.veteranStatus = false;
+    }
+
     public String getShelterName() {
         return shelterName;
     }
