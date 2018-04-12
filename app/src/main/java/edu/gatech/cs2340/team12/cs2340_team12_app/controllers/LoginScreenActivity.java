@@ -15,6 +15,11 @@ import edu.gatech.cs2340.team12.cs2340_team12_app.R;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.User;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.UserList;
 
+/**
+ * Login screen for the app.
+ * navigates to the welcome screen or the main screen
+ * checks if your login attempt is successful to determine whether to send you to the main screen
+ */
 public class LoginScreenActivity extends AppCompatActivity {
 
     @Override
@@ -63,6 +68,11 @@ public class LoginScreenActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Creates an intent for other activities to use to start this one
+     * @param context   where the activity is being called from
+     * @return          the intent used to start this activity
+     */
     public static Intent makeIntent(Context context) {
         return new Intent(context, LoginScreenActivity.class);
     }

@@ -12,6 +12,11 @@ import android.widget.Toast;
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.UserList;
 
+/**
+ * registration screen in which users enter in their desired username and password for their account
+ * checks whether the username is taken and if the passwords entered match. you can navigate to the
+ * welcome screen from here
+ */
 public class RegistrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +65,11 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Creates an intent for other activities to use to start this one
+     * @param context   where the activity is being called from
+     * @return          the intent used to start this activity
+     */
     public static Intent makeIntent(Context context) {
         return new Intent(context, RegistrationActivity.class);
     }

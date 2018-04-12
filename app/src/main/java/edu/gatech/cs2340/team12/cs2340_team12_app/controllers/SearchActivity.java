@@ -16,6 +16,10 @@ import java.util.List;
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.Shelter;
 
+/**
+ * Search screen, where you can narrrow the entries shown in the main screen by selecting criteria
+ * to filter the shelters by. you can navigate to the main screen from here
+ */
 public class SearchActivity extends AppCompatActivity {
 
     @Override
@@ -81,7 +85,11 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Creates an intent for other activities to use to start this one
+     * @param context   where the activity is being called from
+     * @return          the intent used to start this activity
+     */
     public static Intent makeIntent(Context context) {
         return new Intent(context, SearchActivity.class);
     }

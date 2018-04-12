@@ -5,6 +5,12 @@ import java.io.Serializable;
 
 /**
  * Created by Gabriel on 2/25/2018.
+ *
+ * Holds basic account information:
+ *  username
+ *  password
+ *  email
+ *  whether the account has been disabled
  */
 
 public class Account implements Serializable{

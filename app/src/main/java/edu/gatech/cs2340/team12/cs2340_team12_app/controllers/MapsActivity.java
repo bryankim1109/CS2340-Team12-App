@@ -17,6 +17,9 @@ import java.util.List;
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.Shelter;
 
+/**
+ * Map screen displays the map and the shelters on the map
+ */
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     @Override
@@ -55,7 +58,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 11));
     }
 
-
+    /**
+     * Creates an intent for other activities to use to start this one
+     * @param context   where the activity is being called from
+     * @return          the intent used to start this activity
+     */
     public static Intent makeIntent(Context context) {
         return new Intent(context, MapsActivity.class);
     }

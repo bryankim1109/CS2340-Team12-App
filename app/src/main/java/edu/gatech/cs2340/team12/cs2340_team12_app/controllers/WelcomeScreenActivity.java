@@ -9,6 +9,10 @@ import android.view.View;
 import edu.gatech.cs2340.team12.cs2340_team12_app.R;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.FirebaseInterface;
 
+/**
+ * Welcome screen that opens when you first open the app
+ * you can navigate to the login screen or the registration screen from here.
+ */
 public class WelcomeScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

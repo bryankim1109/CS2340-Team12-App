@@ -5,6 +5,8 @@ import java.io.Serializable;
 
 /**
  * Created by Bryan on 2/25/2018.
+ *
+ * Holds basic shelter info
  */
 
 public class Shelter implements Serializable{
@@ -20,10 +22,23 @@ public class Shelter implements Serializable{
 
     private String uid;
 
+    /**
+     * This is required for firebase
+     */
     public Shelter() {
     }
 
-    // Used for parser
+    /**
+     * Used for the parser
+     *
+     * @param shelterName   used to set the class's shelterName attribute
+     * @param capacity      used to set the class's capacity attribute
+     * @param gender        used to set the class's gender attribute
+     * @param longitude     used to set the class's longitude attribute
+     * @param latitude      used to set the class's latitude attribute
+     * @param address       used to set the class's address attribute
+     * @param phoneNumber   used to set the class's phoneNumber attribute
+     */
     public Shelter(String shelterName, int capacity, String gender,
                    String longitude, String latitude, String address, String phoneNumber) {
         this.shelterName = shelterName;
@@ -37,6 +52,19 @@ public class Shelter implements Serializable{
         this.veteranStatus = false;
     }
 
+    /**
+     * Used for general purposes to set every attribute
+     *
+     * @param shelterName   used to set the class's shelterName attribute
+     * @param capacity      used to set the class's capacity attribute
+     * @param gender        used to set the class's gender attribute
+     * @param ageGroup      used to set the class's ageGroup attribute
+     * @param longitude     used to set the class's longitude attribute
+     * @param latitude      used to set the class's latitude attribute
+     * @param address       used to set the class's address attribute
+     * @param phoneNumber   used to set the class's phoneNumber attribute
+     * @param veteranStatus used to set the class's veteranStatus attribute
+     */
     public Shelter(String shelterName, int capacity, String gender, String ageGroup,
                    String longitude, String latitude, String address, String phoneNumber,
                    boolean veteranStatus) {
@@ -51,7 +79,13 @@ public class Shelter implements Serializable{
         this.veteranStatus = veteranStatus;
     }
 
-    //Used for JUnit testing
+    /**
+     * Used specifically to create shelters to test the filterShelters function in JUnit
+     *
+     * @param shelterName   used to set the class's shelterName attribute
+     * @param gender        used to set the class's gender attribute
+     * @param ageGroup      used to set the class's ageGroup attribute
+     */
     public Shelter(String shelterName, String gender, String ageGroup) {
         this.shelterName = shelterName;
         this.capacity = 0;
@@ -143,6 +177,11 @@ public class Shelter implements Serializable{
         return shelterName;
     }
 
+    /**
+     * Gives a Character Sequence that displays info about the shelter in a block
+     *
+     * @return  The info about the shelter
+     */
     public CharSequence toDisplayInfo() {
         return "Shelter name: " + shelterName + "\n" +
                 "Capacity: " + capacity + "\n" +

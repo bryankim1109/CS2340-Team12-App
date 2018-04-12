@@ -13,6 +13,8 @@ import java.util.List;
 
 /**
  * Created by Gabriel on 3/9/2018.
+ *
+ * Interface for the Firebase Database
  */
 
 public final class FirebaseInterface {
@@ -69,7 +71,11 @@ public final class FirebaseInterface {
         return users;
     }
 
-    //uses shelter name to determine if that shelter is in the database and then updates it
+    /**
+     * Uses the UID of the given shelter to find its firebase entry and update it
+     * @param s     a shelter that needs to be updated in the database
+     * @return      true, allows for implementation of checking if successful in future
+     */
     public static boolean updateShelter(Shelter s) {
         Log.d("Shelter UID", "The UID is " + s.getUid());
         String UID = s.getUid();
@@ -79,7 +85,11 @@ public final class FirebaseInterface {
         return true;
     }
 
-    //for registration, adds a new user
+    /**
+     * Adds a new user to the database upon successful registration
+     * @param u     a new user that has just registered
+     * @return      true, allows for implementation of success checking in future
+     */
     public static boolean addUser(User u) {
         DatabaseReference userDatabase = FirebaseDatabase.getInstance()
                 .getReference("Accounts/Users");
@@ -89,7 +99,11 @@ public final class FirebaseInterface {
         return true;
     }
 
-    //for editing user, updates an existing user
+    /**
+     * Uses the UID of the given user to find its firebase entry and update it
+     * @param u     a user that needs to be updated in the database
+     * @return      true, allows for implementation of checking if successful in future
+     */
     public static boolean updateUser(User u) {
         String UID = u.getUID();
         DatabaseReference userDatabase = FirebaseDatabase.getInstance()

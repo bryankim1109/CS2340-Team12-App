@@ -13,6 +13,10 @@ import edu.gatech.cs2340.team12.cs2340_team12_app.R;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.Shelter;
 import edu.gatech.cs2340.team12.cs2340_team12_app.models.User;
 
+/**
+ * shelter screen where you can reserve a bed at a shelter or un-reserve a bed. this screen also
+ * displays info about the shelter. you can navigate to the main screen from here.
+ */
 public class ShelterActivity extends AppCompatActivity {
 
 
@@ -82,6 +86,11 @@ public class ShelterActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Creates an intent for other activities to use to start this one
+     * @param context   where the activity is being called from
+     * @return          the intent used to start this activity
+     */
     public static Intent makeIntent(Context context) {
         return new Intent(context, ShelterActivity.class);
     }
